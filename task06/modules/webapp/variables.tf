@@ -33,6 +33,7 @@ variable "app_dotnet_version" {
 variable "sql_connection_string" {
   description = "Connection string for the SQL Database"
   type        = string
+  sensitive   = true
 }
 
 # Resource group variables
