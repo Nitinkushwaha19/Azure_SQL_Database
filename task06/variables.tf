@@ -36,7 +36,7 @@ variable "sql_server_minimum_tls_version" {
 }
 
 # Firewall Rule Variables
-variable "verification_ip" {
+variable "allowed_ip_address" {
   description = "IP address to be allowed for verification in the firewall rule"
   type        = string
 }

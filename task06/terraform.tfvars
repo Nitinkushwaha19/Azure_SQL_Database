@@ -11,7 +11,7 @@ mssql_db_license_type = "BasePrice"
 sku_name              = "S2"
 
 # Firewall Rule Variables
-verification_ip = "18.153.146.156"
+allowed_ip_address = "18.153.146.156"
 
 # Key Vault Variables
 rg_key_vault_name = "cmaz-2ehw6cyk-mod6-kv-rg"

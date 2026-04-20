@@ -49,7 +49,7 @@ module "sql" {
   sku_name              = var.sku_name
 
   mssql_firewall_rule_name = local.firewall_rule_name
-  verification_ip          = var.verification_ip
+  verification_ip          = var.allowed_ip_address
 
   key_vault_id          = data.azurerm_key_vault.kv.id # existing key vault ID
   key_vault_secret_name = local.sql_admin_name_secret  # secret name in the key vault to store SQL admin password
