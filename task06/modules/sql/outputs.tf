@@ -9,7 +9,7 @@ output "sql_server" {
 
 # Output for SQL Connection String
 output "sql_connection_string" {
-  value       = "Server=${azurerm_mssql_server.mssql_server.fully_qualified_domain_name};Database=${azurerm_mssql_database.mssql_database.name};User Id=${var.sql_server_admin_login};Password=${random_password.sql_admin_password.result};"
+  value       = "Server=tcp:${azurerm_mssql_server.mssql_server.fully_qualified_domain_name},1433;Initial Catalog=${azurerm_mssql_database.mssql_database.name};Persist Security Info=False;User ID=${var.sql_server_admin_login};Password=${random_password.sql_admin_password.result};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
   sensitive   = true
   description = "Connection string for the SQL Database"
 }
