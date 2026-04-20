@@ -46,6 +46,15 @@ resource "azurerm_mssql_firewall_rule" "verification_ip" {
   end_ip_address   = var.verification_ip
 }
 
+# Azure Key Vault Secret for SQL Admin name
+resource "azurerm_key_vault_secret" "sql_admin_name" {
+  name         = var.key_vault_secret_name
+  value        = var.sql_server_admin_login
+  key_vault_id = var.key_vault_id
+
+  tags = var.tags
+}
+
 # Azure Key Vault Secret for SQL Admin Password
 resource "azurerm_key_vault_secret" "sql_admin_password" {
   name         = var.key_vault_secret_name
