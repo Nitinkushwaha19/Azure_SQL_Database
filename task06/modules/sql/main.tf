@@ -16,6 +16,7 @@ resource "azurerm_mssql_server" "mssql_server" {
   administrator_login          = var.sql_server_admin_login
   administrator_login_password = random_password.sql_admin_password.result
   minimum_tls_version          = var.sql_server_minimum_tls_version
+  tags                         = var.tags
 }
 
 # Azure SQL Database
@@ -44,6 +45,7 @@ resource "azurerm_mssql_firewall_rule" "verification_ip" {
   server_id        = azurerm_mssql_server.mssql_server.id
   start_ip_address = var.verification_ip
   end_ip_address   = var.verification_ip
+
 }
 
 # Azure Key Vault Secret for SQL Admin name
