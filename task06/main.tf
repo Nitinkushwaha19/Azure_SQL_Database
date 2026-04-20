@@ -1,29 +1,8 @@
-# Get current client configuration for permissions
-data "azurerm_client_config" "current" {}
-
 data "azurerm_key_vault" "kv" {
   name                = var.key_vault_name
   resource_group_name = var.rg_key_vault_name
 }
 
-# Grant Key Vault access to current service principal/user
-resource "azurerm_key_vault_access_policy" "terraform_access" {
-  key_vault_id = data.azurerm_key_vault.kv.id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = data.azurerm_client_config.current.object_id
-
-  secret_permissions = [
-    "Get",
-    "List",
-    "Set",
-    "Delete",
-    "Recover",
-    "Backup",
-    "Restore"
-  ]
-
-  depends_on = [data.azurerm_key_vault.kv]
-}
 
 resource "azurerm_resource_group" "rg" {
   name     = local.rg_name
