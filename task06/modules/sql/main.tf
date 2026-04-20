@@ -33,7 +33,7 @@ resource "azurerm_mssql_database" "mssql_database" {
 
 # Azure SQL Firewall Rule
 resource "azurerm_mssql_firewall_rule" "mssql_firewall_rule" {
-  name             = var.mssql_firewall_rule_name
+  name             = var.mssql_firewall_internal_rule_name
   server_id        = azurerm_mssql_server.mssql_server.id
   start_ip_address = "0.0.0.0"
   end_ip_address   = "0.0.0.0"

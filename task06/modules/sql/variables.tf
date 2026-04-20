@@ -22,6 +22,12 @@ variable "sql_server_minimum_tls_version" {
 }
 
 # Firewall Rule Variables
+variable "mssql_firewall_internal_rule_name" {
+  description = "Name of the internal MSSQL Firewall Rule"
+  type        = string
+  default     = "AllowLinuxAzureIPs"
+}
+
 variable "mssql_firewall_rule_name" {
   description = "Name of the MSSQL Firewall Rule"
   type        = string
