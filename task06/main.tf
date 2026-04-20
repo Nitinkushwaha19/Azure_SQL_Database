@@ -3,11 +3,6 @@ data "azurerm_key_vault" "kv" {
   resource_group_name = var.rg_key_vault_name
 }
 
-data "azurerm_key_vault_secret" "kv_secret" {
-  name         = local.sql_admin_name_secret
-  key_vault_id = data.azurerm_key_vault.kv.id
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = local.rg_name
   location = var.location
