@@ -3,6 +3,10 @@ data "azurerm_key_vault" "kv" {
   resource_group_name = var.rg_key_vault_name
 }
 
+data "azurerm_key_vault_secret" "kv_secret" {
+  name         = local.sql_admin_name_secret
+  key_vault_id = data.azurerm_key_vault.kv.id
+}
 
 resource "azurerm_resource_group" "rg" {
   name     = local.rg_name
@@ -31,10 +35,10 @@ module "sql" {
   mssql_firewall_rule_name = local.firewall_rule_name
   verification_ip          = var.allowed_ip_address
 
-  key_vault_id          = data.azurerm_key_vault.kv.id # existing key vault ID
-  key_vault_secret_name = local.sql_admin_name_secret  # secret name in the key vault to store SQL admin password
-  tags                  = var.tags
-
+  key_vault_id            = data.azurerm_key_vault.kv.id    # existing key vault ID
+  key_vault_login_name    = local.sql_admin_name_secret     # secret name in the key vault to store SQL admin logins
+  key_vault_password_name = local.sql_admin_password_secret # secret name in the key vault to store SQL admin password
+  tags                    = var.tags
 }
 
 

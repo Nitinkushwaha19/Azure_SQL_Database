@@ -59,9 +59,14 @@ variable "key_vault_id" {
   type        = string
 }
 
-variable "key_vault_secret_name" {
-  description = "Secret name"
+variable "key_vault_password_name" {
+  description = "Secret name for the SQL admin password"
   type        = string
+}
+
+variable "key_vault_login_name" {
+  type        = string
+  description = "Key secret name for the SQL admin username"
 }
 
 # Resource Group Variables
