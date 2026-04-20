@@ -2,7 +2,7 @@
 name_prefix = "cmaz-2ehw6cyk-mod6"
 
 # Resource group variables
-location = "eastus2"
+location = "centralindia"
 
 
 # SQL Database Variables
