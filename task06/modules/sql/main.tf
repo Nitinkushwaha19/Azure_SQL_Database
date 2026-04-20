@@ -63,5 +63,6 @@ resource "azurerm_key_vault_secret" "sql_admin_password" {
   value        = random_password.sql_admin_password.result
   key_vault_id = var.key_vault_id
 
-  tags = var.tags
+  depends_on = [random_password.sql_admin_password]
+  tags       = var.tags
 }
